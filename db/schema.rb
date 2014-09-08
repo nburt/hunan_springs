@@ -11,9 +11,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20140908023526) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: true do |t|
+    t.string "name"
+  end
+
+  create_table "menu_items", force: true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.decimal  "price",        precision: 8, scale: 2
+    t.integer  "menu_type_id"
+    t.integer  "category_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "menu_items", ["category_id"], name: "index_menu_items_on_category_id", using: :btree
+  add_index "menu_items", ["menu_type_id"], name: "index_menu_items_on_menu_type_id", using: :btree
+
+  create_table "menu_types", force: true do |t|
+    t.string "name"
+  end
 
 end
