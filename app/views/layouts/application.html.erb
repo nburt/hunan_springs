@@ -1,12 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>HunanSprings</title>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <title>Hunan Springs</title>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+<header>
+  <h1>Hunan Springs</h1>
+
+  <nav>
+    <ul>
+      <li>Menu</li>
+      <li>About Us</li>
+      <li>Contact Us</li>
+    </ul>
+  </nav>
+</header>
 
 <%= yield %>
 
