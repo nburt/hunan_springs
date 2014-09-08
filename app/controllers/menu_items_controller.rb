@@ -4,6 +4,7 @@ class MenuItemsController < ApplicationController
     @menu_item = MenuItem.new
     @menu_types = MenuType.all
     @categories = Category.all
+    @sizes = Size.all
   end
 
   def create
@@ -19,6 +20,7 @@ class MenuItemsController < ApplicationController
       :name,
       :description,
       :price,
+      :size_id,
       :menu_type_id,
       :category_id
     )

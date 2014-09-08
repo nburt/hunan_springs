@@ -216,5 +216,25 @@ feature 'admin section' do
         expect(page).to have_content '1.50'
       end
     end
+
+    scenario 'an admin can add a Small Soup menu item' do
+      create_sizes
+      visit '/menu_items/new'
+      fill_in 'menu_item[name]', with: 'Wonton Soup'
+      fill_in 'menu_item[description]', with: 'Delicious'
+      fill_in 'menu_item[price]', with: '1.25'
+      select 'Small', from: 'menu_item[size_id]'
+      select 'Dinner', from: 'menu_item[menu_type_id]'
+      select 'Soup', from: 'menu_item[category_id]'
+      click_button 'Create Menu Item'
+      visit '/menu'
+      within '.soup-container' do
+        expect(page).to have_content 'Soup'
+        expect(page).to have_content 'Wonton Soup'
+        expect(page).to have_content 'Delicious'
+        expect(page).to have_content '1.25'
+        expect(page).to have_content 'Small'
+      end
+    end
   end
 end
