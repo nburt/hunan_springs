@@ -1,7 +1,7 @@
 <h1>Add Menu Item</h1>
 
 <ul>
-  <%= @menu_item.errors.full_messages.each do |message| %>
+  <% @menu_item.errors.full_messages.each do |message| %>
     <li><%= message %></li>
   <% end %>
 </ul>

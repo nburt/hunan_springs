@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-feature 'admin section' do
-  context 'adding menu items' do
+feature "admin dashboard" do
+  context "adding menu items" do
 
     before do
       create_categories
@@ -18,7 +18,7 @@ feature 'admin section' do
       select 'Dinner', from: 'menu_item[menu_type_id]'
       select 'Chef Special', from: 'menu_item[category_id]'
       click_button 'Create Menu Item'
-      expect(page).to have_content 'Sesame Chicken was successfully added'
+      expect(page).to have_content 'Sesame Chicken was successfully added!'
       expect(page).to have_content 'Add Menu Item'
       visit '/menu'
       within '.chef-special-container' do
@@ -237,5 +237,21 @@ feature 'admin section' do
       end
     end
 
+  end
+
+  context "creating categories" do
+    scenario 'an admin can create a category' do
+      visit '/admin'
+      click_link 'Create Category'
+      fill_in 'category[name]', with: 'Chef Specials'
+      click_button 'Create Category'
+      expect(page).to have_content 'Categories'
+      expect(page).to have_content 'Chef Specials was successfully created!'
+      within '.categories-container ul' do
+        expect(page).to have_content 'Chef Specials'
+      end
+      click_link 'Add Category'
+      expect(page).to have_field 'category[name]'
+    end
   end
 end

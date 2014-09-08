@@ -1,0 +1,13 @@
+<div class="categories-container">
+  <h1>Categories</h1>
+
+  <%= flash[:category_success] %>
+
+  <%= link_to "Add Category", new_category_path %>
+
+  <ul>
+    <% @categories.each do |category| %>
+      <li><%= category.name %></li>
+    <% end %>
+  </ul>
+</div>
