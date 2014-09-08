@@ -1,12 +1,29 @@
 <div class="menu-container">
   <%= @menu_items.each do |menu_item| %>
-    <section class="chef-special-container">
-      <h3><%= menu_item.category.name %></h3>
-      <ul>
-        <li><%= menu_item.name %></li>
-        <li><%= menu_item.description %></li>
-        <li><%= number_to_currency(menu_item.price, unit: "$") %></li>
-      </ul>
-    </section>
+    <% if menu_item.category.name == "Appetizers" %>
+      <%= render partial: "menu_item", locals: {category: "appetizers", menu_item: menu_item} %>
+    <% elsif menu_item.category.name == "Fried Rice" %>
+      <%= render partial: "menu_item", locals: {category: "fried-rice", menu_item: menu_item} %>
+    <% elsif menu_item.category.name == "Pork" %>
+      <%= render partial: "menu_item", locals: {category: "pork", menu_item: menu_item} %>
+    <% elsif menu_item.category.name == "Beef" %>
+      <%= render partial: "menu_item", locals: {category: "beef", menu_item: menu_item} %>
+    <% elsif menu_item.category.name == "Egg Foo Young" %>
+      <%= render partial: "menu_item", locals: {category: "egg-foo-young", menu_item: menu_item} %>
+    <% elsif menu_item.category.name == "Poultry" %>
+      <%= render partial: "menu_item", locals: {category: "poultry", menu_item: menu_item} %>
+    <% elsif menu_item.category.name == "Seafood" %>
+      <%= render partial: "menu_item", locals: {category: "seafood", menu_item: menu_item} %>
+    <% elsif menu_item.category.name == "Vegetables" %>
+      <%= render partial: "menu_item", locals: {category: "vegetables", menu_item: menu_item} %>
+    <% elsif menu_item.category.name == "Lo Mein and Chow Mein" %>
+      <%= render partial: "menu_item", locals: {category: "lo-mein-chow-mein", menu_item: menu_item} %>
+    <% elsif menu_item.category.name == "Chef Special" %>
+      <%= render partial: "menu_item", locals: {category: "chef-special", menu_item: menu_item} %>
+    <% elsif menu_item.category.name == "Dessert" %>
+      <%= render partial: "menu_item", locals: {category: "dessert", menu_item: menu_item} %>
+    <% elsif menu_item.category.name == "Beverages" %>
+      <%= render partial: "menu_item", locals: {category: "beverages", menu_item: menu_item} %>
+    <% end %>
   <% end %>
 </div>

@@ -1,0 +1,8 @@
+<section class="<%= category %>-container">
+  <h3><%= menu_item.category.name %></h3>
+  <ul>
+    <li><%= menu_item.name %></li>
+    <li><%= menu_item.description %></li>
+    <li><%= number_to_currency(menu_item.price, unit: "$") %></li>
+  </ul>
+</section>
