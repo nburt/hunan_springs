@@ -289,4 +289,20 @@ feature "admin dashboard" do
       expect(page).to have_field 'category[name]'
     end
   end
+
+  context "creating menu types" do
+    scenario 'an admin can create a menu type' do
+      visit '/admin'
+      click_link 'Create Menu Type'
+      fill_in 'menu_type[name]', with: 'Lunch'
+      click_button 'Create Menu Type'
+      expect(page).to have_content 'Menu Types'
+      expect(page).to have_content 'Menu Type: Lunch was successfully created!'
+      within '.menu-types-container td' do
+        expect(page).to have_content 'Lunch'
+      end
+      click_link 'Add Menu Type'
+      expect(page).to have_field 'menu_type[name]'
+    end
+  end
 end

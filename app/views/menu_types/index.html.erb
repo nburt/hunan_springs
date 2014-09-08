@@ -1,0 +1,18 @@
+<div class="menu-types-container">
+  <h1>Menu Types</h1>
+
+  <%= flash[:menu_type_success] %>
+
+  <%= link_to "Add Menu Type", new_menu_type_path %>
+
+  <table>
+    <thead>
+    <th>Name</th>
+    </thead>
+    <tbody>
+    <% @menu_types.each do |menu_type| %>
+      <td><%= menu_type.name %></td>
+    <% end %>
+    </tbody>
+  </table>
+</div>

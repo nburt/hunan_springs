@@ -1,0 +1,13 @@
+<h1>Create a Menu TYpe</h1>
+
+<ul>
+  <% @menu_type.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+  <% end %>
+</ul>
+
+<%= form_for @menu_type do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.submit "Create Menu Type" %>
+<% end %>
