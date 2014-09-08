@@ -1,5 +1,11 @@
 <h1>Add Menu Item</h1>
 
+<ul>
+  <%= @menu_item.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+  <% end %>
+</ul>
+
 <%= flash[:menu_item_success] %>
 
 <%= form_for @menu_item do |f| %>

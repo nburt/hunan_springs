@@ -236,5 +236,6 @@ feature 'admin section' do
         expect(page).to have_content 'Small'
       end
     end
+
   end
 end
