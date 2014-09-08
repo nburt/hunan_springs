@@ -1,5 +1,9 @@
 class MenuItemsController < ApplicationController
 
+  def index
+    @menu_items = MenuItem.all
+  end
+
   def new
     @menu_item = MenuItem.new
     @menu_types = MenuType.all
@@ -11,7 +15,7 @@ class MenuItemsController < ApplicationController
     @menu_item = MenuItem.new(strong_params)
     if @menu_item.save
       flash[:menu_item_success] = "#{@menu_item.name} was successfully added!"
-      redirect_to new_menu_item_path
+      redirect_to menu_items_path
     else
       render :new
     end

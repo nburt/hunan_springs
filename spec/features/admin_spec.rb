@@ -217,7 +217,7 @@ feature "admin dashboard" do
       end
     end
 
-    scenario 'an admin can add a Small Soup menu item' do
+    scenario 'an admin can add a Soup menu item' do
       create_sizes
       visit '/menu_items/new'
       fill_in 'menu_item[name]', with: 'Wonton Soup'
@@ -235,6 +235,41 @@ feature "admin dashboard" do
         expect(page).to have_content '1.25'
         expect(page).to have_content 'Small'
       end
+    end
+
+    scenario 'admin is directed to menu item index after successful menu item creation' do
+      create_sizes
+      visit '/admin'
+      click_link 'Add Menu Item'
+      fill_in 'menu_item[name]', with: 'Wonton Soup'
+      fill_in 'menu_item[description]', with: 'Delicious'
+      fill_in 'menu_item[price]', with: '1.25'
+      select 'Small', from: 'menu_item[size_id]'
+      select 'Dinner', from: 'menu_item[menu_type_id]'
+      select 'Soup', from: 'menu_item[category_id]'
+      click_button 'Create Menu Item'
+      expect(page).to have_content 'Wonton Soup was successfully added!'
+
+      expect(page).to have_content 'Name'
+      expect(page).to have_content 'Description'
+      expect(page).to have_content 'Price'
+      expect(page).to have_content 'Menu Type'
+      expect(page).to have_content 'Category'
+      expect(page).to have_content 'Size'
+
+      within 'table' do
+        expect(page).to have_content 'Wonton Soup'
+      end
+      expect(page).to have_content 'Delicious'
+      expect(page).to have_content '1.25'
+      expect(page).to have_content 'Dinner'
+      within 'table td:nth-child(5)' do
+        expect(page).to have_content 'Soup'
+      end
+      expect(page).to have_content 'Small'
+
+      click_link 'Add Menu Item'
+      expect(page).to have_field 'menu_item[name]'
     end
 
   end

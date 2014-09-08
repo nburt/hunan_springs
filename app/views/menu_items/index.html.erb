@@ -1,0 +1,27 @@
+<h1>Menu Items</h1>
+
+<%= flash[:menu_item_success] %>
+
+<%= link_to "Add Menu Item", new_menu_item_path %>
+
+<table>
+  <thead>
+  <th>Name</th>
+  <th>Description</th>
+  <th>Price</th>
+  <th>Menu Type</th>
+  <th>Category</th>
+  <th>Size</th>
+  </thead>
+
+  <tbody>
+  <% @menu_items.each do |menu_item| %>
+    <td><%= menu_item.name %></td>
+    <td><%= menu_item.description %></td>
+    <td><%= number_to_currency(menu_item.price, unit: "$") %></td>
+    <td><%= menu_item.menu_type.name %></td>
+    <td><%= menu_item.category.name %></td>
+    <td><%= menu_item.size.name if menu_item.size %></td>
+  <% end %>
+  </tbody>
+</table>

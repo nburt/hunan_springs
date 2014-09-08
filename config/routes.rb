@@ -6,6 +6,6 @@ Rails.application.routes.draw do
     get '/', to: 'dashboard#index'
   end
 
-  resources :menu_items, only: [:new, :create]
+  resources :menu_items, only: [:index, :new, :create]
   resources :categories, only: [:index, :new, :create]
 end
