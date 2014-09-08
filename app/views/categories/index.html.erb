@@ -5,9 +5,16 @@
 
   <%= link_to "Add Category", new_category_path %>
 
-  <ul>
+  <table>
+    <thead>
+    <th>Name</th>
+    </thead>
+    <tbody>
     <% @categories.each do |category| %>
-      <li><%= category.name %></li>
+      <tr>
+        <td><%= category.name %></td>
+      </tr>
     <% end %>
-  </ul>
+    </tbody>
+  </table>
 </div>

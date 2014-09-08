@@ -282,7 +282,7 @@ feature "admin dashboard" do
       click_button 'Create Category'
       expect(page).to have_content 'Categories'
       expect(page).to have_content 'Chef Specials was successfully created!'
-      within '.categories-container ul' do
+      within '.categories-container td' do
         expect(page).to have_content 'Chef Specials'
       end
       click_link 'Add Category'

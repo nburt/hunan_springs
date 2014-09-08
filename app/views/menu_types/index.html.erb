@@ -10,8 +10,11 @@
     <th>Name</th>
     </thead>
     <tbody>
+
     <% @menu_types.each do |menu_type| %>
-      <td><%= menu_type.name %></td>
+      <tr>
+        <td><%= menu_type.name %></td>
+      </tr>
     <% end %>
     </tbody>
   </table>
