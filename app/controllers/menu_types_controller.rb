@@ -11,7 +11,7 @@ class MenuTypesController < ApplicationController
   def create
     @menu_type = MenuType.new(strong_params)
     if @menu_type.save
-      flash[:menu_type_success] = "Menu Type: Lunch was successfully created!"
+      flash[:menu_type_success] = "Menu Type: #{@menu_type.name} was successfully created!"
       redirect_to menu_types_path
     else
       render :new
