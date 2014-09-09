@@ -36,5 +36,14 @@ describe MenuItem do
       menu_item.category_id = nil
       expect(menu_item).to_not be_valid
     end
+
+    it 'must have a unique name if it has the same menu type' do
+      expect(menu_item).to be_valid
+      menu_item_2 = MenuItem.create!(name: 'Sesame Chicken', description: 'good', price: '9.95', menu_type_id: '1', category_id: '1')
+      expect(menu_item).to_not be_valid
+      menu_item_2.menu_type_id = '2'
+      menu_item_2.save
+      expect(menu_item).to be_valid
+    end
   end
 end
