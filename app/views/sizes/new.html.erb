@@ -1,0 +1,13 @@
+<h1>Create a Menu Item Size</h1>
+
+<ul>
+  <% @size.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+  <% end %>
+</ul>
+
+<%= form_for @size do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.submit "Create Menu Item Size" %>
+<% end %>

@@ -1,0 +1,21 @@
+<div class="sizes-container">
+  <h1>Sizes</h1>
+
+  <%= flash[:size_success] %>
+
+  <%= link_to "Add Menu Item Size", new_size_path %>
+
+  <table>
+    <thead>
+    <th>Name</th>
+    </thead>
+    <tbody>
+
+    <% @sizes.each do |size| %>
+      <tr>
+        <td><%= size.name %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

@@ -305,4 +305,20 @@ feature "admin dashboard" do
       expect(page).to have_field 'menu_type[name]'
     end
   end
+
+  context "creating sizes" do
+    scenario 'an admin can create a size' do
+      visit '/admin'
+      click_link 'Create Menu Item Size'
+      fill_in 'size[name]', with: 'Small'
+      click_button 'Create Menu Item Size'
+      expect(page).to have_content 'Sizes'
+      expect(page).to have_content 'Size: Small was successfully created!'
+      within '.sizes-container td' do
+        expect(page).to have_content 'Small'
+      end
+      click_link 'Add Menu Item Size'
+      expect(page).to have_field 'size[name]'
+    end
+  end
 end

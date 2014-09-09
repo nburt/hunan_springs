@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   resources :menu_items, only: [:index, :new, :create]
   resources :categories, only: [:index, :new, :create]
   resources :menu_types, only: [:index, :new, :create]
+  resources :sizes, only: [:index, :new, :create]
 end
