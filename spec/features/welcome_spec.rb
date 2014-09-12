@@ -17,4 +17,10 @@ feature 'visiting the homepage' do
     click_link 'Menu'
     expect(page).to have_content 'Sesame Chicken'
   end
+
+  scenario 'a user can visit the contact us page' do
+    visit '/'
+    click_link 'Contact Us'
+    expect(page).to have_content '24 E. Kiowa St.'
+  end
 end
