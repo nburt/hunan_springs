@@ -8,4 +8,13 @@ feature 'visiting the homepage' do
     expect(page).to have_content 'About Us'
     expect(page).to have_content 'Contact Us'
   end
+
+  scenario 'a user can visit the menu page' do
+    create_categories
+    create_menu_types
+    create_menu_item
+    visit '/'
+    click_link 'Menu'
+    expect(page).to have_content 'Sesame Chicken'
+  end
 end

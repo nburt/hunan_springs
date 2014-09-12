@@ -1,5 +1,5 @@
 <div class="menu-container">
-  <%= @menu_items.each do |menu_item| %>
+  <% @menu_items.each do |menu_item| %>
     <% if menu_item.category.name == "Appetizers" %>
       <%= render partial: "menu_item", locals: {category: "appetizers", menu_item: menu_item} %>
     <% elsif menu_item.category.name == "Soup" %>
