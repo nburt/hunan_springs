@@ -1,0 +1,9 @@
+main {
+  @include outer-container;
+  margin: 3em auto;
+}
+
+body {
+  margin: 0;
+  background: $background;
+}

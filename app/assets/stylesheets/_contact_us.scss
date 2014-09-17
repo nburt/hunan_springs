@@ -1,0 +1,16 @@
+.hunan-image {
+  @include span-columns(6);
+  margin-top: .5em;
+  background: url(image_path("hunan.png")) no-repeat;
+  height: 20em;
+}
+
+.contact-information {
+  @include span-columns(6);
+  h3 {
+    margin: .25em 0;
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+}

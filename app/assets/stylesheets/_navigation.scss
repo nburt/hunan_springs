@@ -1,0 +1,31 @@
+nav {
+  @include outer-container;
+
+  padding: .25em 0;
+
+  .brand-name {
+    font-size: 2em;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  ul {
+    margin-top: 1.2em;
+    float: right;
+  }
+
+  li {
+    display: inline-block;
+    margin-left: .5em;
+  }
+
+  a {
+    font-weight: bold;
+    color: $white;
+    &:hover {
+      color: $white;
+      text-decoration: underline;
+    }
+  }
+}
