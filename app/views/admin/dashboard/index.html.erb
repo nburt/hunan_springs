@@ -1,5 +1,7 @@
 <h1>Admin Dashboard</h1>
 
+<%= flash[:login_success] %>
+
 <%= link_to 'Add Menu Item', new_menu_item_path %>
 <%= link_to 'Create Category', new_category_path %>
 <%= link_to 'Create Menu Type', new_menu_type_path %>

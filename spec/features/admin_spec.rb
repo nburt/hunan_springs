@@ -4,6 +4,7 @@ feature "admin dashboard" do
   context "CRUDing menu items" do
 
     before do
+      sign_in
       create_categories
       create_menu_types
     end
@@ -278,6 +279,7 @@ feature "admin dashboard" do
 
     context "update, read, destroy menu items" do
       scenario 'an admin can view menu items' do
+        sign_in
         create_menu_item
         create_menu_item('General Tso Chicken')
         visit '/admin'
@@ -291,6 +293,7 @@ feature "admin dashboard" do
   context "CRUDing categories" do
     context "creating categories" do
       scenario 'an admin can create a category' do
+        sign_in
         visit '/admin'
         click_link 'Create Category'
         fill_in 'category[name]', with: 'Chef Specials'
@@ -309,6 +312,7 @@ feature "admin dashboard" do
   context "CRUDing menu types" do
     context "creating menu types" do
       scenario 'an admin can create a menu type' do
+        sign_in
         visit '/admin'
         click_link 'Create Menu Type'
         fill_in 'menu_type[name]', with: 'Lunch'
@@ -327,6 +331,7 @@ feature "admin dashboard" do
   context "CRUDing sizes" do
     context "creating sizes" do
       scenario 'an admin can create a size' do
+        sign_in
         visit '/admin'
         click_link 'Create Menu Item Size'
         fill_in 'size[name]', with: 'Small'
@@ -339,6 +344,19 @@ feature "admin dashboard" do
         click_link 'Add Menu Item Size'
         expect(page).to have_field 'size[name]'
       end
+    end
+  end
+
+  context "login" do
+    scenario 'users are redirected to sign in page where they can sign in,' do
+      visit '/admin'
+      expect(page).to have_content('Please sign in')
+
+      fill_in 'username', with: ENV['USERNAME']
+      fill_in 'password', with: ENV['PASSWORD']
+      click_button 'Sign in'
+
+      expect(page).to have_content 'Welcome, admin!'
     end
   end
 end

@@ -14,6 +14,7 @@ gem 'bitters', '~> 0.10.0'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.1.0'
+  gem 'dotenv-rails', '~> 0.11.1'
 end
 
 group :test do
