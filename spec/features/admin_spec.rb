@@ -283,7 +283,9 @@ feature "admin dashboard" do
         create_menu_item
         create_menu_item('General Tso Chicken')
         visit '/admin'
-        click_link 'Menu Items'
+        within '.admin-links-container' do
+          click_link 'Menu Items'
+        end
         expect(page).to have_content 'Sesame Chicken'
         expect(page).to have_content 'General Tso Chicken'
       end
@@ -294,8 +296,7 @@ feature "admin dashboard" do
     context "creating categories" do
       scenario 'an admin can create a category' do
         sign_in
-        visit '/admin'
-        click_link 'Create Category'
+        visit '/admin/categories/new'
         fill_in 'category[name]', with: 'Chef Specials'
         click_button 'Create Category'
         expect(page).to have_content 'Categories'
@@ -313,8 +314,7 @@ feature "admin dashboard" do
     context "creating menu types" do
       scenario 'an admin can create a menu type' do
         sign_in
-        visit '/admin'
-        click_link 'Create Menu Type'
+        visit '/admin/menu_types/new'
         fill_in 'menu_type[name]', with: 'Lunch'
         click_button 'Create Menu Type'
         expect(page).to have_content 'Menu Types'
@@ -332,8 +332,7 @@ feature "admin dashboard" do
     context "creating sizes" do
       scenario 'an admin can create a size' do
         sign_in
-        visit '/admin'
-        click_link 'Create Menu Item Size'
+        visit '/admin/sizes/new'
         fill_in 'size[name]', with: 'Small'
         click_button 'Create Menu Item Size'
         expect(page).to have_content 'Sizes'
@@ -363,6 +362,20 @@ feature "admin dashboard" do
       sign_in
       click_link 'Logout'
       expect(page).to have_content('Please sign in')
+    end
+  end
+
+  context "admin navigation" do
+    scenario 'admin can access admin dashboard through secondary navigation bar' do
+      sign_in
+      within '.admin-nav' do
+        expect(page).to have_link('Dashboard')
+        expect(page).to have_link('Menu Items')
+        expect(page).to have_link('Categories')
+        expect(page).to have_link('Menu Types')
+        expect(page).to have_link('Sizes')
+        expect(page).to have_link('Logout')
+      end
     end
   end
 end

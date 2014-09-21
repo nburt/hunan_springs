@@ -1,6 +1,10 @@
 main {
   @include outer-container;
   margin: 3em auto;
+  h1 {
+    text-align: center;
+    margin-bottom: 1em;
+  }
 }
 
 body {

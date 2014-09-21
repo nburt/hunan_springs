@@ -2,8 +2,9 @@
 
 <%= flash[:login_success] %>
 
-<%= link_to "Menu Items", admin_menu_items_path, class: "admin-link" %>
-
-<%= link_to 'Create Category', new_admin_category_path, class: "admin-link" %>
-<%= link_to 'Create Menu Type', new_admin_menu_type_path, class: "admin-link" %>
-<%= link_to 'Create Menu Item Size', new_admin_size_path, class: "admin-link" %>
+<div class="admin-links-container">
+  <%= link_to "Menu Items", admin_menu_items_path, class: "main-link" %>
+  <%= link_to "Categories", admin_categories_path, class: "main-link" %>
+  <%= link_to "Menu Types", admin_menu_types_path, class: "main-link" %>
+  <%= link_to "Menu Item Sizes", admin_sizes_path, class: "main-link" %>
+</div>

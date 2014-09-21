@@ -9,16 +9,16 @@
 <body>
 <header>
 
-  <nav>
+  <nav class="main-nav">
     <%= link_to "Hunan Springs", root_path, class: "brand-name" %>
     <ul>
       <li><%= link_to "Menu", menu_path %></li>
       <li><%= link_to "Contact Us", contact_us_path %></li>
-      <% if logged_in? %>
-        <li><%= link_to "Logout", "/admin/session", method: :delete %></li>
-      <% end %>
     </ul>
   </nav>
+  <% if logged_in? %>
+    <%= render partial: "partials/admin_nav" %>
+  <% end %>
 </header>
 
 <main>
