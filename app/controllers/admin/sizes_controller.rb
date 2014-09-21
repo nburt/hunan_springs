@@ -19,6 +19,25 @@ module Admin
       end
     end
 
+    def edit
+      @size = Size.find(params[:id])
+    end
+
+    def update
+      @size = Size.find(params[:id])
+      if @size.update_attributes(strong_params)
+        redirect_to admin_sizes_path
+      else
+        render :edit
+      end
+    end
+
+    def destroy
+      size = Size.find(params[:id])
+      size.destroy
+      redirect_to admin_sizes_path
+    end
+
     private
 
     def strong_params

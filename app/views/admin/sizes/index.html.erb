@@ -8,12 +8,17 @@
   <table>
     <thead>
     <th>Name</th>
+    <th></th>
     </thead>
     <tbody>
 
     <% @sizes.each do |size| %>
       <tr>
         <td><%= size.name %></td>
+        <td>
+          <%= link_to "Edit", edit_admin_size_path(size), class: "main-button" %>
+          <%= link_to "Delete", admin_size_path(size), method: :delete, class: "main-button" %>
+        </td>
       </tr>
     <% end %>
     </tbody>

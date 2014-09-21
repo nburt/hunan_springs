@@ -390,20 +390,37 @@ feature "admin dashboard" do
   end
 
   context "CRUDing sizes" do
-    context "creating sizes" do
-      scenario 'an admin can create a size' do
-        sign_in
-        visit '/admin/sizes/new'
-        fill_in 'size[name]', with: 'Small'
-        click_button 'Create Menu Item Size'
-        expect(page).to have_content 'Sizes'
-        expect(page).to have_content 'Size: Small was successfully created!'
-        within '.sizes-container td' do
-          expect(page).to have_content 'Small'
-        end
-        click_link 'Add Menu Item Size'
-        expect(page).to have_field 'size[name]'
+    scenario 'an admin can create a size' do
+      sign_in
+      visit('/admin/sizes/new')
+      fill_in('size[name]', with: 'Small')
+      click_button('Create Menu Item Size')
+      expect(page).to have_content('Sizes')
+      expect(page).to have_content('Size: Small was successfully created!')
+      within('table') do
+        expect(page).to have_content('Small')
       end
+      click_link('Add Menu Item Size')
+      expect(page).to have_field('size[name]')
+    end
+
+    scenario 'an admin can edit a size' do
+      Size.create!(name: 'Small')
+      sign_in
+      visit(admin_sizes_path)
+      click_link('Edit')
+      fill_in('size[name]', with: 'Large')
+      click_button('Update Size')
+      expect(page).to_not have_content('Small')
+      expect(page).to have_content('Large')
+    end
+
+    scenario 'an admin can delete a size' do
+      Size.create!(name: 'Small')
+      sign_in
+      visit(admin_sizes_path)
+      click_link('Delete')
+      expect(page).to_not have_content('Small')
     end
   end
 

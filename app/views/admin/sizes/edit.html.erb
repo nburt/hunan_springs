@@ -1,0 +1,3 @@
+<h3>Edit <%= @size.name %></h3>
+
+<%= render partial: "sizes_form", locals: {url: "/admin/sizes/#{@size.id}", button_text: "Update Size"} %>

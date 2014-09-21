@@ -9,6 +9,6 @@ Rails.application.routes.draw do
     resources :menu_items
     resources :categories
     resources :menu_types
-    resources :sizes, only: [:index, :new, :create]
+    resources :sizes
   end
 end
