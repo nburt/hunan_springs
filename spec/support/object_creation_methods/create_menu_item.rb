@@ -1,5 +1,5 @@
 def create_menu_item(name = 'Sesame Chicken')
-  visit '/admin'
+  visit '/admin/menu_items'
   click_link 'Add Menu Item'
   fill_in 'menu_item[name]', with: name
   fill_in 'menu_item[description]', with: 'Chicken, sesame, spicy'

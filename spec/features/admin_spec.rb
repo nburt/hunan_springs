@@ -12,7 +12,7 @@ feature "admin dashboard" do
     context "adding menu items" do
 
       scenario 'an admin can add a Chef Special menu item' do
-        visit '/admin'
+        visit '/admin/menu_items'
         click_link 'Add Menu Item'
         expect(page).to have_content 'Add Menu Item'
         fill_in 'menu_item[name]', with: 'Sesame Chicken'
@@ -33,7 +33,7 @@ feature "admin dashboard" do
       end
 
       scenario 'an admin can add a Beef menu item' do
-        visit '/menu_items/new'
+        visit '/admin/menu_items/new'
         fill_in 'menu_item[name]', with: 'Mongolian Beef'
         fill_in 'menu_item[description]', with: 'Beef, other stuff'
         fill_in 'menu_item[price]', with: '8.50'
@@ -51,7 +51,7 @@ feature "admin dashboard" do
       end
 
       scenario 'an admin can add a Poultry menu item' do
-        visit '/menu_items/new'
+        visit '/admin/menu_items/new'
         fill_in 'menu_item[name]', with: 'Sweet and Sour Chicken'
         fill_in 'menu_item[description]', with: 'so sweet, so sour'
         fill_in 'menu_item[price]', with: '8.50'
@@ -68,7 +68,7 @@ feature "admin dashboard" do
       end
 
       scenario 'an admin can add an Appetizer menu item' do
-        visit '/menu_items/new'
+        visit '/admin/menu_items/new'
         fill_in 'menu_item[name]', with: 'Crab Meat Rangoon'
         fill_in 'menu_item[description]', with: 'Crabby!'
         fill_in 'menu_item[price]', with: '4.25'
@@ -85,7 +85,7 @@ feature "admin dashboard" do
       end
 
       scenario 'an admin can add a Fried Rice menu item' do
-        visit '/menu_items/new'
+        visit '/admin/menu_items/new'
         fill_in 'menu_item[name]', with: 'Chicken Fried Rice'
         fill_in 'menu_item[description]', with: 'Delicious'
         fill_in 'menu_item[price]', with: '6.25'
@@ -102,7 +102,7 @@ feature "admin dashboard" do
       end
 
       scenario 'an admin can add a Pork menu item' do
-        visit '/menu_items/new'
+        visit '/admin/menu_items/new'
         fill_in 'menu_item[name]', with: 'Moo Shu Pork'
         fill_in 'menu_item[description]', with: 'Delicious'
         fill_in 'menu_item[price]', with: '8.25'
@@ -119,7 +119,7 @@ feature "admin dashboard" do
       end
 
       scenario 'an admin can add an Egg Foo Young menu item' do
-        visit '/menu_items/new'
+        visit '/admin/menu_items/new'
         fill_in 'menu_item[name]', with: 'Beef Egg Foo Young'
         fill_in 'menu_item[description]', with: 'Delicious'
         fill_in 'menu_item[price]', with: '7.75'
@@ -136,7 +136,7 @@ feature "admin dashboard" do
       end
 
       scenario 'an admin can add a Seafood menu item' do
-        visit '/menu_items/new'
+        visit '/admin/menu_items/new'
         fill_in 'menu_item[name]', with: 'Hunan Shrimp'
         fill_in 'menu_item[description]', with: 'Delicious'
         fill_in 'menu_item[price]', with: '9.95'
@@ -153,7 +153,7 @@ feature "admin dashboard" do
       end
 
       scenario 'an admin can add a Vegetable menu item' do
-        visit '/menu_items/new'
+        visit '/admin/menu_items/new'
         fill_in 'menu_item[name]', with: 'Sauteed Broccoli with Garlic Sauce'
         fill_in 'menu_item[description]', with: 'Delicious'
         fill_in 'menu_item[price]', with: '7.95'
@@ -170,7 +170,7 @@ feature "admin dashboard" do
       end
 
       scenario 'an admin can add a Lo Mein and Chow Mein menu item' do
-        visit '/menu_items/new'
+        visit '/admin/menu_items/new'
         fill_in 'menu_item[name]', with: 'Combination Lo Mein'
         fill_in 'menu_item[description]', with: 'Delicious'
         fill_in 'menu_item[price]', with: '7.95'
@@ -187,7 +187,7 @@ feature "admin dashboard" do
       end
 
       scenario 'an admin can add a dessert menu item' do
-        visit '/menu_items/new'
+        visit '/admin/menu_items/new'
         fill_in 'menu_item[name]', with: 'Honey Banana'
         fill_in 'menu_item[description]', with: 'Delicious'
         fill_in 'menu_item[price]', with: '4.95'
@@ -204,7 +204,7 @@ feature "admin dashboard" do
       end
 
       scenario 'an admin can add a Beverages menu item' do
-        visit '/menu_items/new'
+        visit '/admin/menu_items/new'
         fill_in 'menu_item[name]', with: 'Soft Drink'
         fill_in 'menu_item[description]', with: 'thirst quenching'
         fill_in 'menu_item[price]', with: '1.50'
@@ -222,7 +222,7 @@ feature "admin dashboard" do
 
       scenario 'an admin can add a Soup menu item' do
         create_sizes
-        visit '/menu_items/new'
+        visit '/admin/menu_items/new'
         fill_in 'menu_item[name]', with: 'Wonton Soup'
         fill_in 'menu_item[description]', with: 'Delicious'
         fill_in 'menu_item[price]', with: '1.25'
@@ -242,7 +242,7 @@ feature "admin dashboard" do
 
       scenario 'admin is directed to menu item index after successful menu item creation' do
         create_sizes
-        visit '/admin'
+        visit '/admin/menu_items'
         click_link 'Add Menu Item'
         fill_in 'menu_item[name]', with: 'Wonton Soup'
         fill_in 'menu_item[description]', with: 'Delicious'
@@ -283,7 +283,7 @@ feature "admin dashboard" do
         create_menu_item
         create_menu_item('General Tso Chicken')
         visit '/admin'
-        click_link 'View Menu Items'
+        click_link 'Menu Items'
         expect(page).to have_content 'Sesame Chicken'
         expect(page).to have_content 'General Tso Chicken'
       end
