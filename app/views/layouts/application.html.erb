@@ -14,12 +14,15 @@
     <ul>
       <li><%= link_to "Menu", menu_path %></li>
       <li><%= link_to "Contact Us", contact_us_path %></li>
+      <% if logged_in? %>
+        <li><%= link_to "Logout", "/admin/session", method: :delete %></li>
+      <% end %>
     </ul>
   </nav>
 </header>
 
 <main>
-<%= yield %>
+  <%= yield %>
 </main>
 
 </body>

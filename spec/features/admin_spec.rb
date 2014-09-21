@@ -358,5 +358,11 @@ feature "admin dashboard" do
 
       expect(page).to have_content 'Welcome, admin!'
     end
+
+    scenario 'admin can log out' do
+      sign_in
+      click_link 'Logout'
+      expect(page).to have_content('Please sign in')
+    end
   end
 end

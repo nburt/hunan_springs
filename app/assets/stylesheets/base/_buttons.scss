@@ -7,4 +7,7 @@ input[type="submit"] {
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
+  &:focus {
+    outline-color: $main-red;
+  }
 }

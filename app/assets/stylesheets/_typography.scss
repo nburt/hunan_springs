@@ -1,0 +1,7 @@
+.admin-link {
+  color: $main-red;
+  &:hover {
+    color: $accent-red;
+    text-decoration: underline;
+  }
+}

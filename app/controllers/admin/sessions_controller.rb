@@ -15,6 +15,11 @@ module Admin
       end
     end
 
+    def destroy
+      cookies.delete(:admin)
+      redirect_to new_admin_session_path
+    end
+
     private
 
     def authenticated?(username, password)
