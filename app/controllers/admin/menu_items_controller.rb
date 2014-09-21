@@ -38,6 +38,12 @@ module Admin
       end
     end
 
+    def destroy
+      @menu_item = MenuItem.find(params[:id])
+      @menu_item.destroy
+      redirect_to admin_menu_items_path
+    end
+
     private
 
     def strong_params

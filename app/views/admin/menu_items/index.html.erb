@@ -22,7 +22,10 @@
     <td><%= menu_item.menu_type.name %></td>
     <td><%= menu_item.category.name %></td>
     <td><%= menu_item.size.name if menu_item.size %></td>
-    <td><%= link_to "Edit", edit_admin_menu_item_path(menu_item), class: "main-button" %></td>
+    <td>
+      <%= link_to "Edit", edit_admin_menu_item_path(menu_item), class: "main-button" %>
+      <%= link_to "Delete", admin_menu_item_path(menu_item), method: :delete, class: "main-button" %>
+    </td>
     </tbody>
   <% end %>
 </table>
