@@ -33,8 +33,8 @@ module Admin
     end
 
     def destroy
-      @category = Category.find(params[:id])
-      @category.destroy
+      category = Category.find(params[:id])
+      category.destroy
       redirect_to admin_categories_path
     end
 

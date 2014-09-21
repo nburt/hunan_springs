@@ -8,12 +8,17 @@
   <table>
     <thead>
     <th>Name</th>
+    <th></th>
     </thead>
     <tbody>
 
     <% @menu_types.each do |menu_type| %>
       <tr>
         <td><%= menu_type.name %></td>
+        <td>
+          <%= link_to "Edit", edit_admin_menu_type_path(menu_type), class: "main-button" %>
+          <%= link_to "Delete", admin_menu_type_path(menu_type), method: :delete, class: "main-button" %>
+        </td>
       </tr>
     <% end %>
     </tbody>

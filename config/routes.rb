@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resource :session, only: [:new, :create, :destroy]
     resources :menu_items
     resources :categories
-    resources :menu_types, only: [:index, :new, :create]
+    resources :menu_types
     resources :sizes, only: [:index, :new, :create]
   end
 end

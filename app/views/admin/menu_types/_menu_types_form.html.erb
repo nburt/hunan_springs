@@ -1,0 +1,12 @@
+
+<ul>
+  <% @menu_type.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+  <% end %>
+</ul>
+
+<%= form_for @menu_type, url: url do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.submit button_name %>
+<% end %>

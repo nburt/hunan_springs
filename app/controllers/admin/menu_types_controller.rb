@@ -19,6 +19,25 @@ module Admin
       end
     end
 
+    def edit
+      @menu_type = MenuType.find(params[:id])
+    end
+
+    def update
+      @menu_type = MenuType.find(params[:id])
+      if @menu_type.update_attributes(strong_params)
+        redirect_to admin_menu_types_path
+      else
+        render :edit
+      end
+    end
+
+    def destroy
+      menu_type = MenuType.find(params[:id])
+      menu_type.destroy
+      redirect_to admin_menu_types_path
+    end
+
     private
 
     def strong_params

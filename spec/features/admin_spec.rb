@@ -355,20 +355,37 @@ feature "admin dashboard" do
   end
 
   context "CRUDing menu types" do
-    context "creating menu types" do
-      scenario 'an admin can create a menu type' do
-        sign_in
-        visit '/admin/menu_types/new'
-        fill_in 'menu_type[name]', with: 'Lunch'
-        click_button 'Create Menu Type'
-        expect(page).to have_content 'Menu Types'
-        expect(page).to have_content 'Menu Type: Lunch was successfully created!'
-        within '.menu-types-container td' do
-          expect(page).to have_content 'Lunch'
-        end
-        click_link 'Add Menu Type'
-        expect(page).to have_field 'menu_type[name]'
+    scenario 'an admin can create a menu type' do
+      sign_in
+      visit('/admin/menu_types/new')
+      fill_in('menu_type[name]', with: 'Lunch')
+      click_button('Create Menu Type')
+      expect(page).to have_content('Menu Types')
+      expect(page).to have_content('Menu Type: Lunch was successfully created!')
+      within('table') do
+        expect(page).to have_content('Lunch')
       end
+      click_link('Add Menu Type')
+      expect(page).to have_field('menu_type[name]')
+    end
+
+    scenario 'an admin can edit a menu type' do
+      MenuType.create!(name: 'Lunch')
+      sign_in
+      visit(admin_menu_types_path)
+      click_link('Edit')
+      fill_in('menu_type[name]', with: 'Dinner')
+      click_button('Update Menu Type')
+      expect(page).to_not have_content('Lunch')
+      expect(page).to have_content('Dinner')
+    end
+
+    scenario 'an admin can delete a menu type' do
+      MenuType.create!(name: 'Lunch')
+      sign_in
+      visit(admin_menu_types_path)
+      click_link('Delete')
+      expect(page).to_not have_content('Lunch')
     end
   end
 
