@@ -22,6 +22,22 @@ module Admin
       end
     end
 
+    def edit
+      @menu_item = MenuItem.find(params[:id])
+      @menu_types = MenuType.all
+      @categories = Category.all
+      @sizes = Size.all
+    end
+
+    def update
+      @menu_item = MenuItem.find(params[:id])
+      if @menu_item.update_attributes(strong_params)
+        redirect_to admin_menu_items_path
+      else
+        render :edit
+      end
+    end
+
     private
 
     def strong_params

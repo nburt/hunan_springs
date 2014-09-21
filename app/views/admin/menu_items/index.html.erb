@@ -12,6 +12,7 @@
   <th>Menu Type</th>
   <th>Category</th>
   <th>Size</th>
+  <th></th>
   </thead>
   <% @menu_items.each do |menu_item| %>
     <tbody>
@@ -21,6 +22,7 @@
     <td><%= menu_item.menu_type.name %></td>
     <td><%= menu_item.category.name %></td>
     <td><%= menu_item.size.name if menu_item.size %></td>
+    <td><%= link_to "Edit", edit_admin_menu_item_path(menu_item), class: "main-button" %></td>
     </tbody>
   <% end %>
 </table>

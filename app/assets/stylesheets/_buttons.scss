@@ -1,0 +1,12 @@
+.main-button {
+  @extend %button;
+  @include appearance(none);
+  border: none;
+  cursor: pointer;
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  &:focus {
+    outline-color: $main-red;
+  }
+}

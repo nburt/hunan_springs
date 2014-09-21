@@ -278,16 +278,37 @@ feature "admin dashboard" do
     end
 
     context "update, read, destroy menu items" do
+
+      before do
+        create_sizes
+      end
+
       scenario 'an admin can view menu items' do
         sign_in
         create_menu_item
         create_menu_item('General Tso Chicken')
-        visit '/admin'
-        within '.admin-links-container' do
-          click_link 'Menu Items'
-        end
+
         expect(page).to have_content 'Sesame Chicken'
         expect(page).to have_content 'General Tso Chicken'
+      end
+
+      scenario 'an admin can update menu items' do
+        sign_in
+        create_menu_item
+        click_link 'Edit'
+        fill_in 'menu_item[name]', with: 'Mongolian Beef'
+        fill_in 'menu_item[description]', with: 'Beefy'
+        fill_in 'menu_item[price]', with: '8.50'
+        select 'Dinner', from: 'menu_item[menu_type_id]'
+        select 'Beef', from: 'menu_item[category_id]'
+        click_button 'Create Menu Item'
+        expect(page).to_not have_content 'Sesame Chicken'
+        expect(page).to_not have_content 'Chicken, sesame, spicy'
+        expect(page).to_not have_content '$9.95'
+        expect(page).to_not have_content 'Chef Special'
+        expect(page).to have_content 'Mongolian Beef'
+        expect(page).to have_content 'Beefy'
+        expect(page).to have_content '$8.50'
       end
     end
   end
