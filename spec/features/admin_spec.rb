@@ -301,7 +301,7 @@ feature "admin dashboard" do
         fill_in('menu_item[price]', with: '8.50')
         select('Dinner', from: 'menu_item[menu_type_id]')
         select('Beef', from: 'menu_item[category_id]')
-        click_button('Create Menu Item')
+        click_button('Update Menu Item')
         expect(page).to_not have_content('Sesame Chicken')
         expect(page).to_not have_content('Chicken, sesame, spicy')
         expect(page).to_not have_content('$9.95')
@@ -320,20 +320,37 @@ feature "admin dashboard" do
   end
 
   context "CRUDing categories" do
-    context "creating categories" do
-      scenario 'an admin can create a category' do
-        sign_in
-        visit '/admin/categories/new'
-        fill_in 'category[name]', with: 'Chef Specials'
-        click_button 'Create Category'
-        expect(page).to have_content 'Categories'
-        expect(page).to have_content 'Chef Specials was successfully created!'
-        within '.categories-container td' do
-          expect(page).to have_content 'Chef Specials'
-        end
-        click_link 'Add Category'
-        expect(page).to have_field 'category[name]'
+    scenario 'an admin can create a category' do
+      sign_in
+      visit('/admin/categories/new')
+      fill_in('category[name]', with: 'Chef Specials')
+      click_button('Create Category')
+      expect(page).to have_content('Categories')
+      expect(page).to have_content('Chef Specials was successfully created!')
+      within('table') do
+        expect(page).to have_content('Chef Specials')
       end
+      click_link('Add Category')
+      expect(page).to have_field('category[name]')
+    end
+
+    scenario 'an admin can edit a category' do
+      Category.create!(name: 'Chef Special')
+      sign_in
+      visit(admin_categories_path)
+      click_link('Edit')
+      fill_in('category[name]', with: 'Beef')
+      click_button('Update Category')
+      expect(page).to_not have_content('Chef Special')
+      expect(page).to have_content('Beef')
+    end
+
+    scenario 'an admin can delete a category' do
+      Category.create!(name: 'Chef Special')
+      sign_in
+      visit(admin_categories_path)
+      click_link('Delete')
+      expect(page).to_not have_content('Chef Special')
     end
   end
 

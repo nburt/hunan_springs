@@ -17,5 +17,5 @@
   <%= f.collection_select :menu_type_id, @menu_types, :id, :name, {include_blank: "Please select a menu type..."} %>
   <%= f.label :category %>
   <%= f.collection_select :category_id, @categories, :id, :name, {include_blank: "Please select a category..."} %>
-  <%= f.submit "Create Menu Item" %>
+  <%= f.submit button_name %>
 <% end %>

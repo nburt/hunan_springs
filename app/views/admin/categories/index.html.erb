@@ -8,11 +8,16 @@
   <table>
     <thead>
     <th>Name</th>
+    <th></th>
     </thead>
     <tbody>
     <% @categories.each do |category| %>
       <tr>
         <td><%= category.name %></td>
+        <td>
+          <%= link_to "Edit", edit_admin_category_path(category), class: "main-button" %>
+          <%= link_to "Delete", admin_category_path(category), method: :delete, class: "main-button" %>
+        </td>
       </tr>
     <% end %>
     </tbody>

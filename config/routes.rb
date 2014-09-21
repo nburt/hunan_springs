@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     get '/', to: 'dashboard#index'
     resource :session, only: [:new, :create, :destroy]
     resources :menu_items
-    resources :categories, only: [:index, :new, :create]
+    resources :categories
     resources :menu_types, only: [:index, :new, :create]
     resources :sizes, only: [:index, :new, :create]
   end
