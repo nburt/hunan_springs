@@ -12,9 +12,9 @@ class MenuController < ApplicationController
   private
 
   def lunch_menu
-    params[:menu] != "dinner" &&
+    params[:type] != "dinner" &&
       Time.parse("08:00:00 -0600") < Time.now &&
       Time.now < Time.parse("15:00:00 -0600") ||
-      params[:menu] == "lunch"
+      params[:type] == "lunch"
   end
 end

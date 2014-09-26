@@ -1,7 +1,7 @@
 <div class="menu-container">
   <div class="menu-type-container">
-    <%= link_to "Lunch Menu", "/menu?menu=lunch", class: "menu-type-link #{@class}" %>
-    <%= link_to "Dinner Menu", "/menu?menu=dinner", class: "menu-type-link #{@class}" %>
+    <%= link_to "Lunch Menu", "/menu?type=lunch", class: "menu-type-link #{@class}" %>
+    <%= link_to "Dinner Menu", "/menu?type=dinner", class: "menu-type-link #{@class}" %>
   </div>
   <% @menu_items.each do |menu_item| %>
     <% if menu_item.category.name == "Appetizers" %>

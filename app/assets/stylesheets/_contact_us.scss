@@ -13,4 +13,29 @@
       margin-top: 0;
     }
   }
+
+  li {
+    padding: .1em 0;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+table.contact-us {
+  width: auto;
+
+  tr {
+    padding: 0;
+    td {
+      padding: .1em 0;
+      border: none;
+      text-align: left;
+      width: 15em;
+      &:first-child {
+        width: 7.5em;
+      }
+    }
+  }
 }
