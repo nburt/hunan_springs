@@ -11,8 +11,6 @@
   <%= f.text_area :description %>
   <%= f.label :price %>
   <%= f.text_field :price %>
-  <%= f.label "Size (if Soup)" %>
-  <%= f.collection_select :size_id, @sizes, :id, :name, {include_blank: "Please select a soup size..."} %>
   <%= f.label :menu_type %>
   <%= f.collection_select :menu_type_id, @menu_types, :id, :name, {include_blank: "Please select a menu type..."} %>
   <%= f.label :category %>

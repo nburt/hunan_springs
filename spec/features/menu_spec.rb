@@ -5,7 +5,6 @@ feature "menu display" do
   before do
     create_categories
     create_menu_types
-    create_sizes
   end
 
   scenario 'it displays the lunch menu between 8 am - 3 pm' do

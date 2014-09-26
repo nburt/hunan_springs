@@ -9,7 +9,6 @@ module Admin
       @menu_item = MenuItem.new
       @menu_types = MenuType.all
       @categories = Category.all
-      @sizes = Size.all
     end
 
     def create
@@ -26,7 +25,6 @@ module Admin
       @menu_item = MenuItem.find(params[:id])
       @menu_types = MenuType.all
       @categories = Category.all
-      @sizes = Size.all
     end
 
     def update
@@ -51,7 +49,6 @@ module Admin
         :name,
         :description,
         :price,
-        :size_id,
         :menu_type_id,
         :category_id
       )

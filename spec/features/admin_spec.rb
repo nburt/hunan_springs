@@ -221,12 +221,10 @@ feature "admin dashboard" do
       end
 
       scenario 'an admin can add a Soup menu item' do
-        create_sizes
         visit '/admin/menu_items/new'
         fill_in 'menu_item[name]', with: 'Wonton Soup'
         fill_in 'menu_item[description]', with: 'Delicious'
         fill_in 'menu_item[price]', with: '1.25'
-        select 'Small', from: 'menu_item[size_id]'
         select 'Dinner', from: 'menu_item[menu_type_id]'
         select 'Soup', from: 'menu_item[category_id]'
         click_button 'Create Menu Item'
@@ -236,18 +234,15 @@ feature "admin dashboard" do
           expect(page).to have_content 'Wonton Soup'
           expect(page).to have_content 'Delicious'
           expect(page).to have_content '1.25'
-          expect(page).to have_content 'Small'
         end
       end
 
       scenario 'admin is directed to menu item index after successful menu item creation' do
-        create_sizes
         visit '/admin/menu_items'
         click_link 'Add Menu Item'
         fill_in 'menu_item[name]', with: 'Wonton Soup'
         fill_in 'menu_item[description]', with: 'Delicious'
         fill_in 'menu_item[price]', with: '1.25'
-        select 'Small', from: 'menu_item[size_id]'
         select 'Dinner', from: 'menu_item[menu_type_id]'
         select 'Soup', from: 'menu_item[category_id]'
         click_button 'Create Menu Item'
@@ -258,7 +253,6 @@ feature "admin dashboard" do
         expect(page).to have_content 'Price'
         expect(page).to have_content 'Menu Type'
         expect(page).to have_content 'Category'
-        expect(page).to have_content 'Size'
 
         within 'table' do
           expect(page).to have_content 'Wonton Soup'
@@ -278,10 +272,6 @@ feature "admin dashboard" do
     end
 
     context "update, read, destroy menu items" do
-
-      before do
-        create_sizes
-      end
 
       scenario 'an admin can view menu items' do
         sign_in
@@ -389,41 +379,6 @@ feature "admin dashboard" do
     end
   end
 
-  context "CRUDing sizes" do
-    scenario 'an admin can create a size' do
-      sign_in
-      visit('/admin/sizes/new')
-      fill_in('size[name]', with: 'Small')
-      click_button('Create Menu Item Size')
-      expect(page).to have_content('Sizes')
-      expect(page).to have_content('Size: Small was successfully created!')
-      within('table') do
-        expect(page).to have_content('Small')
-      end
-      click_link('Add Menu Item Size')
-      expect(page).to have_field('size[name]')
-    end
-
-    scenario 'an admin can edit a size' do
-      Size.create!(name: 'Small')
-      sign_in
-      visit(admin_sizes_path)
-      click_link('Edit')
-      fill_in('size[name]', with: 'Large')
-      click_button('Update Size')
-      expect(page).to_not have_content('Small')
-      expect(page).to have_content('Large')
-    end
-
-    scenario 'an admin can delete a size' do
-      Size.create!(name: 'Small')
-      sign_in
-      visit(admin_sizes_path)
-      click_link('Delete')
-      expect(page).to_not have_content('Small')
-    end
-  end
-
   context "login" do
     scenario 'users are redirected to sign in page where they can sign in,' do
       visit '/admin'
@@ -451,7 +406,6 @@ feature "admin dashboard" do
         expect(page).to have_link('Menu Items')
         expect(page).to have_link('Categories')
         expect(page).to have_link('Menu Types')
-        expect(page).to have_link('Sizes')
         expect(page).to have_link('Logout')
       end
     end
