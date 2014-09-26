@@ -3,3 +3,22 @@
     text-align: center;
   }
 }
+
+.menu-type-container {
+  text-align: center;
+}
+
+.menu-type-link {
+  @extend .main-link;
+  font-size: 1.5em;
+  margin-left: .5em;
+  font-weight: bold;
+}
+
+.dinner:last-child {
+  text-decoration: underline;
+}
+
+.lunch:first-child {
+  text-decoration: underline;
+}

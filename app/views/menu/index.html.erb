@@ -1,5 +1,8 @@
 <div class="menu-container">
-  <h2>Menu</h2>
+  <div class="menu-type-container">
+    <%= link_to "Lunch Menu", "/menu?menu=lunch", class: "menu-type-link #{@class}" %>
+    <%= link_to "Dinner Menu", "/menu?menu=dinner", class: "menu-type-link #{@class}" %>
+  </div>
   <% @menu_items.each do |menu_item| %>
     <% if menu_item.category.name == "Appetizers" %>
       <%= render partial: "menu_item", locals: {category: "appetizers", menu_item: menu_item} %>
